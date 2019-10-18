@@ -1,0 +1,47 @@
+<%- include("header"); -%>
+
+<!-- Display info message -->
+<% if(locals.messages.info) { %>
+<div class="alert alert-dismissible alert-info">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong> <%= messages.info %> </strong>
+</div>
+<% } %>
+
+<!-- Display error message -->
+<% if(locals.messages.error) { %>
+<div class="alert alert-dismissible alert-danger">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong> <%= messages.error %> </strong>
+</div>
+<% } %>
+
+
+
+<form action="/login" method="POST" class="mb-2">
+  <fieldset>
+
+    <legend>
+      <i class="fas fa-sign-in-alt"></i>
+      Login
+    </legend>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" name="email" id="email" placeholder="Enter email..." required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" id="password" placeholder="Enter password..."
+        required>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+
+  </fieldset>
+</form>
+
+<span class="lead">No account? <a href="/register">Register</a></span>
+
+<%- include("footer"); -%>
