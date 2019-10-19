@@ -8,6 +8,29 @@ function inject(depndency) {
   passport = depndency;
 }
 
+// If users already logged in, send them to /users/dashboard
+router.use((req, res, next) => {
+
+  // console.log("[path]: ", req.path);
+  
+  if (req.isAuthenticated()) {
+    switch (req.path) {
+      case "/":
+      case "/login":
+      case "/register":
+        res.redirect("/users/dashboard");
+        break;
+
+      default:
+        next();         // Go forward...
+    }
+  }
+  else {
+    next();       // Move forward...
+  }
+
+});
+
 
 router.get("/", (req, res) => {
   res.render("index");

@@ -97,6 +97,12 @@ app.use("/", rootRoute.router);
 app.use("/users", userRoute.router);
 
 
+// Handle 404 responses
+app.use((req, res, next) => {
+  res.status(404).send("<h1>Sorry, can't find that :(</h1>");
+});
+
+
 app.listen(process.env.PORT, () => {
   console.log(`server started at port ${process.env.PORT}`);
 
